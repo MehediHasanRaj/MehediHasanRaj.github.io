@@ -1,23 +1,75 @@
-import logo from './logo.svg';
+
 import './App.css';
+import HeaderComponent from "./components/HeaderComponent";
+import './css/bootstrap.min.css';
+import './css/style.css';
+import FooterComponent from "./components/FooterComponent";
+
+import HomeComponent from "./components/HomeComponent";
+import {Routes, Route, Navigate} from 'react-router-dom';
+import ContactComponent from "./components/ContactComponent";
+import RecentProjectListComponent from "./components/RecentProjectListComponent";
+import BlogDetailsComponent from "./components/BlogDetailsComponent";
+import BlogListCardComponent from "./ListShowing/BlogListCardComponent";
+
+import ProjectDetailsComponent from "./components/ProjectDetailsComponent";
+import LoginComponent from "./components/LoginComponent";
+import AuthProvider, {useAuth} from "./security/AuthContext";
+import FormAddProjectCompont from "./components/ActionOnForms/FormAddProjectCompont";
+import ErrorComponent from "./components/ErrorComponent";
+import AdminComponent from "./components/ActionOnForms/AdminComponent";
+import DeleteByIdComponent from "./components/ActionOnForms/DeleteByIdComponent";
+import FormAddBlogComponent from "./components/ActionOnForms/FormAddBlogComponent";
+import FormAddCertificateComponents from "./components/ActionOnForms/FormAddCertificateComponents";
+import ContactListsComponents from "./components/ActionOnForms/ContactListsComponents";
+import CertificateListsComponents from "./components/CertificateListComponents";
+
+function AuthenticatedRoute({children}){
+    const authContext = useAuth();
+    console.log(authContext.isAuthenticated);
+    if(authContext.isAuthenticated){
+        return children
+    }
+    return <Navigate to={'/'} />
+}
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <AuthProvider>
+            <HeaderComponent/>
+                    <Routes>
+                        <Route path="/" element={<HomeComponent/>}/>
+                        <Route path="/contact" element={<ContactComponent/>}/>
+                        <Route path="/project-list" element={<RecentProjectListComponent/>}/>
+                        <Route path="/blog-details/:id" element={<BlogDetailsComponent/>}/>
+                        <Route path="/blog" element={<BlogListCardComponent/>}/>
+                        {/*<Route path="/test" element={<TestComponent/>}/>*/}
+                        <Route path="/project-details/:id" element={<ProjectDetailsComponent/>}/>
+                        <Route path="/certificate-lists" element={<CertificateListsComponents/>}/>
+
+                        <Route path="/login" element={<LoginComponent/>}/>
+
+                        <Route path="/list-contacts" element={<ContactListsComponents/>}/>
+                        <Route path="/add-blog" element={<FormAddBlogComponent/>}/>
+                        <Route path="/add-certificate" element={<FormAddCertificateComponents/>}/>
+
+                        <Route path="/add-project" element={<AuthenticatedRoute>
+                            <FormAddProjectCompont/>
+                        </AuthenticatedRoute>}/>
+                        <Route path="/admin" element={<AuthenticatedRoute>
+                            <AdminComponent/>
+                        </AuthenticatedRoute>}/>
+
+                        <Route path="/delete" element={<AuthenticatedRoute>
+                            <DeleteByIdComponent/>
+                        </AuthenticatedRoute>}/>
+
+                        <Route path={"*"} element={<ErrorComponent/>}/>
+                    </Routes>
+            <FooterComponent/>
+        </AuthProvider>
     </div>
   );
 }
