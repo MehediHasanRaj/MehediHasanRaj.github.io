@@ -29,7 +29,7 @@ function ContactListsComponents() {
         <>
             <br/>
             <br/>
-            <h1>Contact lists</h1>
+            <h1>Messages</h1>
             <table className={"table table-bordered table-hover"}>
                 <thead className="thead-dark">
                 <tr>

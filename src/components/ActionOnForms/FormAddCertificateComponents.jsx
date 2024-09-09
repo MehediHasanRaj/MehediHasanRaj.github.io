@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import {useAuth} from "../../security/AuthContext";
 
 
 export default function FormAddCertificateComponents() {
@@ -11,6 +12,7 @@ export default function FormAddCertificateComponents() {
             description:''
         }
     )
+    const authContext = useAuth()
 
 
     function handleContactChange(event){
@@ -41,7 +43,7 @@ export default function FormAddCertificateComponents() {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/api/certificates", blogData, {
+            const response = await authContext.apiClient.post("/api/certificates", blogData, {
                 headers: {
                     "Content-Type": "application/json", // Set the correct content type
                 },
@@ -71,20 +73,20 @@ export default function FormAddCertificateComponents() {
                 <div className="lightBg" style={{paddingTop: '50px', paddingBottom: '30px'}}>
                     <div className="container">
                         <form style={{textAlign: 'left'}} onSubmit={submitContact}>
-                            <label htmlFor="title">Certificate Name</label>
+                            <label htmlFor="title"><b>Certificate Name</b></label>
                             <input type="text" name="title" onChange={handleContactChange}
                                    placeholder="course name.."/>
 
-                            <label htmlFor="organization">Issued Organization</label>
+                            <label htmlFor="organization"><b>Issued Organization</b></label>
                             <input type="text" name="organization" onChange={handleContactChange}
                                    placeholder="organization.."/>
 
-                            <label htmlFor="date">Date</label><br/>
+                            <label htmlFor="date"><b>Date</b></label><br/>
                             <input type="date" name="date" onChange={handleContactChange}
                                    /> <br/><br/>
 
 
-                            <label htmlFor="description">Course Summary</label>
+                            <label htmlFor="description"><b>Course Summary</b></label>
                             <input type="text" name="description" placeholder="Write something.."
                                    onChange={handleContactChange}></input>
                             <button className='button-85' type={"submit"} value={"submit"}>Submit</button>

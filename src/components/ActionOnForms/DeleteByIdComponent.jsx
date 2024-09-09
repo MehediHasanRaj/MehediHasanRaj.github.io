@@ -1,10 +1,10 @@
 import {useState} from "react";
-import axios from "axios";
+
+import {useAuth} from "../../security/AuthContext";
 
 export default function DeleteByIdComponent(){
     const [id, setId] = useState(-1); // this is for deleting id
-
-    // deleting
+    const authContext = useAuth()
 
     function handleIdChange(e) {
         setId(e.target.value);  //if we write in form, it will update the defaul value
@@ -12,27 +12,27 @@ export default function DeleteByIdComponent(){
     }
 
     function handleDeleteProjectSubmit() {
-        axios.delete(`http://localhost:8080/api/projects/${id}`)
+        authContext.apiClient.delete(`/api/projects/${id}`)
             .then(res => {console.log(res)})
             .catch(err => console.log(err));
 
     }
     function handleDeleteBlogSubmit() {
 
-        axios.delete(`http://localhost:8080/api/blogs/${id}`)
+        authContext.apiClient.delete(`/api/blogs/${id}`)
             .then(res => {console.log(res)})
             .catch(err => console.log(err));
 
 
     }
     function handleDeleteCertificateSubmit() {
-        axios.delete(`http://localhost:8080/api/certificates/${id}`)
+        authContext.apiClient.delete(`/api/certificates/${id}`)
             .then(res => {console.log(res)})
             .catch(err => console.log(err));
 
     }
     function handleDeleteContactSubmit() {
-        axios.delete(`http://localhost:8080/api/contacts/${id}`)
+        authContext.apiClient.delete(`/api/contacts/${id}`)
             .then(res => {console.log(res)})
             .catch(err => console.log(err));
 
@@ -52,27 +52,27 @@ export default function DeleteByIdComponent(){
                 <hr/>
                 <div style={{textAlign: 'justify', padding: '10px'}}>
                     <div>
-                        <label> Project id: </label>
+                        <label> <b>Project id: </b></label>
                         <input type="number" name="id" placeholder="Enter project ID" onChange={handleIdChange}/>
-                        <button type="button" className={"btn-secondary"} name="submit"
+                        <button type="button" className={"button-85"} name="submit" style={{padding:'4px'}}
                                 onClick={handleDeleteProjectSubmit}>Submit
                         </button>
                     </div>
                     <br/>
 
                     <div>
-                        <label> blog id: </label>
+                        <label><b> blog id: </b></label>
                         <input type="number" name="id" placeholder="Enter blog ID" onChange={handleIdChange}/>
-                        <button type="button" className={"btn-secondary"} name="submit"
+                        <button type="button" className={"button-85"} name="submit" style={{padding:'4px'}}
                                 onClick={handleDeleteBlogSubmit}>Submit
                         </button>
                     </div>
                     <br/>
 
                     <div>
-                        <label> Certificate id: </label>
+                        <label> <b>Certificate id: </b></label>
                         <input type="number" name="id" placeholder="Enter certificate ID" onChange={handleIdChange}/>
-                        <button type="button" className={"btn-secondary"} name="submit"
+                        <button type="button" className={"button-85"} style={{padding:'4px'}} name="submit"
                                 onClick={handleDeleteCertificateSubmit}>Submit
                         </button>
                     </div>
@@ -80,9 +80,9 @@ export default function DeleteByIdComponent(){
                     <br/>
 
                     <div>
-                        <label> Contact id: </label>
+                        <label> <b>Contact id: </b></label>
                         <input type="number" name="id" placeholder="Enter Contact ID" onChange={handleIdChange}/>
-                        <button type="button" className={"btn-secondary"} name="submit"
+                        <button type="button" className={"button-85"} style={{padding:'4px'}} name="submit"
                                 onClick={handleDeleteContactSubmit}>Submit
                         </button>
                     </div>

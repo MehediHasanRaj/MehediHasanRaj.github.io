@@ -9,12 +9,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useAuth} from "../security/AuthContext";
 
 export default function SwipperCertificateComponent() {
     const [certificateData, setCertificateData] = useState([]);
-
+    const authContext = useAuth()
     useEffect(()=> {
-        axios.get('http://localhost:8080/api/certificates')
+        authContext.apiClient.get('/api/certificates')
             .then((res) => {setCertificateData(res.data);})
             .catch((err)=>{console.log(err);});
     },[]);

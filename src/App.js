@@ -51,10 +51,9 @@ function App() {
 
                         <Route path="/login" element={<LoginComponent/>}/>
 
-                        <Route path="/list-contacts" element={<ContactListsComponents/>}/>
-                        <Route path="/add-blog" element={<FormAddBlogComponent/>}/>
-                        <Route path="/add-certificate" element={<FormAddCertificateComponents/>}/>
-
+                        <Route path="/contact-lists" element={<AuthenticatedRoute><ContactListsComponents/></AuthenticatedRoute>}/>
+                        <Route path="/add-blog" element={<AuthenticatedRoute><FormAddBlogComponent/></AuthenticatedRoute>}/>
+                        <Route path="/add-certificate" element={<AuthenticatedRoute><FormAddCertificateComponents/></AuthenticatedRoute>}/>
                         <Route path="/add-project" element={<AuthenticatedRoute>
                             <FormAddProjectCompont/>
                         </AuthenticatedRoute>}/>
@@ -65,7 +64,6 @@ function App() {
                         <Route path="/delete" element={<AuthenticatedRoute>
                             <DeleteByIdComponent/>
                         </AuthenticatedRoute>}/>
-
                         <Route path={"*"} element={<ErrorComponent/>}/>
                     </Routes>
             <FooterComponent/>

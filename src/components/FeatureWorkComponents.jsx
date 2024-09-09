@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import '../css/style.css'
 import workimage from '../images/work-img.jpg'
 import thumbimage from '../images/user-thumb.jpg'
 import ashiq from '../images/ashiq2.jpg'
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {useAuth} from "../security/AuthContext";
 
 
 export default function FeatureWorkComponents() {
     let [data, setData] = useState([]);
+    const authContext = useAuth()
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/projects')
+        authContext.apiClient.get('/api/projects')
             .then((res) => {
                 setData(res.data);
             })
@@ -49,7 +51,7 @@ export default function FeatureWorkComponents() {
                                             <div className="col-md-auto">
                                                 <div className="portfolioImgCol">
                                                     <Link to={`/project-details/${ob.id}`}>
-                                                        <img src={`http://localhost:8080${ob.imageLink}`} alt="..." />
+                                                        <img src={`${authContext.baseUrl}${ob.imageLink}`} alt="..." />
                                                     </Link>
 
                                                 </div>

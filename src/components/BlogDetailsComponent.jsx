@@ -2,12 +2,13 @@ import '../css/style.css'
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {useAuth} from "../security/AuthContext";
 export default function BlogDetailsComponent(){
     const {id} = useParams();
     const [data, setData] = useState([]);
-
+    const authContext = useAuth();
     useEffect(()=> {
-        axios.get('http://localhost:8080/api/blogs/'+id)
+        authContext.apiClient.get('/api/blogs/'+id)
             .then((res) => {setData(res.data);})
             .catch((err)=>{console.log(err);});
     },[]);

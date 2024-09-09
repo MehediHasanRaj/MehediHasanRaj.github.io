@@ -2,14 +2,15 @@ import ProjectListComponent from "../ListShowing/ProjectListComponent";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {useAuth} from "../security/AuthContext";
 
 
 export default function RecentProjectListComponent() {
 
     let [data, setData] = useState([]);
-
+    const authContext = useAuth()
     useEffect(() => {
-        axios.get('http://localhost:8080/api/projects')
+        authContext.apiClient.get('/api/projects')
             .then((res) => {
                 setData(res.data);
             })
@@ -45,11 +46,11 @@ export default function RecentProjectListComponent() {
                                     {index % 4 === 0 && (
                                         <article className="postcard light blue" style={{ textAlign: 'justify' }}>
 
-                                            <Link to={"/project-list"} className="postcard__img_link"><img
-                                                className="postcard__img" src="https://picsum.photos/1000/1000"
-                                                alt="Image Title"/></Link>
+                                            <img
+                                                className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
+                                                alt="Image Title"/>
                                             <div className="postcard__text t-dark">
-                                            <h1 className="postcard__title blue"><a href="#">{ob.title}</a></h1>
+                                            <h1 className="postcard__title blue"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
                                                 <div className="postcard__subtitle small">
                                                     <time dateTime="2020-05-25 12:00:00">
                                                         <i className="fas fa-calendar-alt mr-2"></i> {ob.date}
@@ -79,11 +80,11 @@ export default function RecentProjectListComponent() {
 
                                     {index % 4 === 1 && (
                                         <article className="postcard light red">
-                                            <a className="postcard__img_link" href="#">
-                                                <img className="postcard__img" src="https://picsum.photos/501/500" alt="Image Title"/>
-                                            </a>
+
+                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'} alt="Image Title"/>
+
                                             <div className="postcard__text t-dark">
-                                                <h1 className="postcard__title red"><a href="#">{ob.title}</a></h1>
+                                                <h1 className="postcard__title red"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
                                                 <div className="postcard__subtitle small">
                                                     <time dateTime="2020-05-25 12:00:00">
                                                         <i className="fas fa-calendar-alt mr-2"></i> {ob.date}
@@ -110,12 +111,12 @@ export default function RecentProjectListComponent() {
 
                                     {index % 4 === 2 && (
                                         <article className="postcard light green">
-                                            <a className="postcard__img_link" href="#">
-                                                <img className="postcard__img" src="https://picsum.photos/500/501"
+
+                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
                                                      alt="Image Title"/>
-                                            </a>
+
                                             <div className="postcard__text t-dark">
-                                                <h1 className="postcard__title green"><a href="#">{ob.title}</a></h1>
+                                                <h1 className="postcard__title green"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
                                                 <div className="postcard__subtitle small">
                                                     <time dateTime="2020-05-25 12:00:00">
                                                         <i className="fas fa-calendar-alt mr-2"></i>{ob.date}
@@ -146,13 +147,17 @@ export default function RecentProjectListComponent() {
 
                                     {index % 4 === 3 && (
                                         <article className="postcard light yellow">
-                                            <a className="postcard__img_link" href="#">
-                                                <img className="postcard__img" src="https://picsum.photos/501/501"
+
+                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
                                                      alt="Image Title"/>
-                                            </a>
+
                                             <div className="postcard__text t-dark">
-                                                <h1 className="postcard__title yellow"><a href="#">{ob.title}</a>
+                                                {/*<h1 className="postcard__title yellow"><a href="#">{ob.title}</a>*/}
+                                                {/*</h1>*/}
+                                                <h1 className="postcard__title yellow">
+                                                    <Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link>
                                                 </h1>
+
                                                 <div className="postcard__subtitle small">
                                                     <time dateTime="2020-05-25 12:00:00">
                                                         <i className="fas fa-calendar-alt mr-2"></i>{ob.date}

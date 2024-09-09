@@ -1,12 +1,13 @@
 import {useMemo, useRef, useState} from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import {useAuth} from "../../security/AuthContext";
 
 export default function FormAddProjectCompont() {
     const [techInput, setTechInput] = useState("");
     const editor = useRef(null);
     const [description, setDescription] = useState("");
-
+    const authContext = useAuth()
     // const config = useMemo({
     //     readonly: false,
     //     placeholder: this.placeholder || 'start typing..'
@@ -78,7 +79,7 @@ export default function FormAddProjectCompont() {
 
         try {
             // Send the request using Axios
-            const response = axios.post("http://localhost:8080/api/projects", formData, {
+            const response = authContext.apiClient.post("/api/projects", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -104,59 +105,59 @@ export default function FormAddProjectCompont() {
             <br/>
             <br/>
             <div>
-                <h1>Project Section</h1>
+                <h1>Add Project</h1>
                 <hr/>
                 <form onSubmit={handleProjectSubmit} style={{paddingTop: '10px', textAlign: 'justify'}}>
                     <div style={{padding: '10px'}}>
-                        <label htmlFor="projectName">Project Name: </label>
+                        <label htmlFor="projectName"><b>Project Name: </b></label>
                         <input type="input" name="projectName" onChange={handleProjectChange}/>
                     </div>
                     <div style={{padding: '6px'}}>
-                        <label htmlFor="summary">Project Summary: </label>
+                        <label htmlFor="summary"><b>Project Summary: </b></label>
                         <input type="text" name="summary" onChange={handleProjectChange}/>
                     </div>
 
                     {/*project description*/}
                     <div style={{padding: '6px', paddingTop: '0px'}}>
-                        <label htmlFor="description">Project Description: </label>
+                        <label htmlFor="description"><b>Project Description: </b></label>
                         {/*<input type="text" name="description" onChange={handleProjectChange}/>*/}
                         <JoditEditor ref={editor} value={description} onChange={newdescription=>setDescription(newdescription)} />
                     </div>
 
                     {/* Tech Stack input */}
                     <div style={{padding: "10px"}}>
-                        <label htmlFor="techStack">Tech Stack: </label>
+                        <label htmlFor="techStack"><b>Tech Stack: </b></label>
                         <input
                             type="text"
                             name="techStackInput"
                             value={techInput}
                             onChange={(e) => setTechInput(e.target.value)} // Update input value
                         />
-                        <button type="button" className={'btn-dark'} onClick={handleTechStackAdd}>Add Tech</button>
-                        <div>
+                        <button type="button" className={'button-85'} style={{padding:'5px'}} onClick={handleTechStackAdd}>Add Tech</button>
+                        <div style={{paddingTop: '7px'}}>
                             {project.techStack.map((tech, index) => (
                                 <span key={index} style={{marginRight: "10px"}}>
-                  {tech}
+                                    <div className={'button-33'}>{tech}</div>
                 </span>
                             ))}
                         </div>
                     </div>
 
                     <div style={{padding: '10px'}}>
-                        <label htmlFor="date">Enter Date: </label>
+                        <label htmlFor="date"><b>Enter Date: </b></label>
                         <input type="date" name="date" onChange={handleProjectChange}/>
                     </div>
 
                     <div style={{padding: '10px'}}>
-                        <label htmlFor="image">Upload Image: </label>
+                        <label htmlFor="image"><b>Upload Image: </b></label>
                         <input type="file" name="image" onChange={handleProjectChange}/>
                     </div>
                     <div style={{padding: '10px'}}>
-                        <label htmlFor="youtubeLink">Youtube Link: </label>
+                        <label htmlFor="youtubeLink"><b>Youtube Link: </b></label>
                         <input type="input" name="youtubeLink" onChange={handleProjectChange}/>
                     </div>
 
-                    <button type="submit" className={'btn-secondary'} style={{padding: '5px'}}>Submit</button>
+                    <button type="submit" className={'button-85'} style={{padding: '5px'}}>Submit</button>
                 </form>
 
             </div>

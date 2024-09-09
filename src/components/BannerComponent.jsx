@@ -4,12 +4,14 @@ import '../css/button85.css'
 
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {useAuth} from "../security/AuthContext";
 const Banner = () => {
 
     const [data, setData] = useState([]);
-
+    const authContext = useAuth();
     useEffect(()=> {
-        axios.get('http://localhost:8080/api/profile')
+
+        authContext.apiClient.get('/api/profile')
             .then((res) => {setData(res.data);})
             .catch((err)=>{console.log(err);});
     },[]);
@@ -30,6 +32,10 @@ const Banner = () => {
                             <div className="bannerContent">
                                 <h1 className="xlTitle pb-3" style={{textAlign: 'left'}}>Hi, I’m Mehedi Hasan
                                     Raj, <br/> a Java Full-Stack Software Developer</h1>
+                                <div style={{textAlign:'justify', fontFamily:'courier', fontStyle:'italic'}}>
+                                    <p><b>B.Sc. in Computer Science @NSU, BD.(1<sup>st</sup> class)</b><br/>
+                                    <b>M.Sc. in Data Science @Essex, UK.(Distinction)</b></p>
+                                </div>
                                 <p style={{
                                     textAlign: 'left',
                                     fontFamily: 'Arial, Helvetica, sans-serif',
@@ -46,7 +52,7 @@ const Banner = () => {
                                     <div className="row">
                                         <div className="col-auto">
                                             {/*<a download href="javascript:void(0)" className="btn btnPrimary">Download Resume</a>*/}
-                                            <a download  href={`http://localhost:8080${data.resumeLink}`}>
+                                            <a download  href={`${authContext.baseUrl}${data.resumeLink}`}>
                                                 <button className="button-85 me-3" role="button"
                                                         style={{padding: '12px'}}>Download Resume
                                                 </button>

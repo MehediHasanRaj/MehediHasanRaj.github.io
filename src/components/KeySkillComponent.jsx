@@ -137,6 +137,7 @@ const Skills = () => {
                                 <button className="techButton me-2 my-1">Spring</button>
                                 <button className="techButton me-2 my-1">Spring boot</button>
                                 <button className="techButton me-2 my-1">Microservice</button>
+                                <button className="techButton me-2 my-1">Spring Security</button>
                                 <button className="techButton me-2 my-1">React</button>
                                 <button className="techButton me-2 my-1">AWS</button>
                                 <button className="techButton me-2 my-1">Maven</button>

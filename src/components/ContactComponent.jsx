@@ -1,8 +1,7 @@
-
-
 import '../css/button85.css'
 import {useState} from "react";
 import axios from "axios";
+import {useAuth} from "../security/AuthContext";
 export default function ContactComponent() {
     const [contact, setContact] = useState(
         {
@@ -11,6 +10,8 @@ export default function ContactComponent() {
             message:''
         }
     )
+
+    const authContext = useAuth()
 
 
     function handleContactChange(event){
@@ -32,7 +33,7 @@ export default function ContactComponent() {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/api/contacts", contactData, {
+            const response = await authContext.apiClient.post("/api/contacts", contactData, {
                 headers: {
                     "Content-Type": "application/json", // Set the correct content type
                 },

@@ -1,4 +1,5 @@
 import {createContext, useContext, useState} from "react";
+import axios from "axios";
 
 // 1. create a context
 export const AuthContext = createContext()
@@ -10,7 +11,11 @@ export default function AuthProvider({children}) {
     // putting some states in context
 
     const [isAuthenticated, setAuthenticated] = useState(false)
+    const apiClient = axios.create({
+        baseURL: 'http://localhost:8080'
+    })
 
+    const baseUrl = "http://localhost:8080"
 
     function login(username, password) {
         if (username === 'mehedi.raj@northsouth.edu' && password === 'mr21396') {
@@ -30,7 +35,7 @@ export default function AuthProvider({children}) {
     }
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, login, logout}}>
+        <AuthContext.Provider value={{isAuthenticated, login, apiClient,baseUrl}}>
             {children}
         </AuthContext.Provider>
     )

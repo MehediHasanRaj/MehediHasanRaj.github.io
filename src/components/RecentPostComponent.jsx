@@ -1,12 +1,12 @@
 import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import {useAuth} from "../security/AuthContext";
 
 export default function RecentPostComponent() {
     let [data, setData] = useState([]);
-
+    const authContext = useAuth()
     useEffect(() => {
-        axios.get('http://localhost:8080/api/blogs')
+        authContext.apiClient.get('/api/blogs')
             .then((res) => {
                 setData(res.data);
             })
@@ -56,19 +56,6 @@ export default function RecentPostComponent() {
                         )}
 
 
-                        {/*<div className="col-lg-6">*/}
-                        {/*    <div className="cardStyle1">*/}
-                        {/*        <h4 className="mdTitle cs1Title"><a href="javascript:void(0)">Using code to structure*/}
-                        {/*            your marketplace</a></h4>*/}
-                        {/*        <ul className="cardOptionCol">*/}
-                        {/*            <li>08 Oct 2021</li>*/}
-                        {/*            <li>Django</li>*/}
-                        {/*        </ul>*/}
-                        {/*        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit*/}
-                        {/*            officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud*/}
-                        {/*            amet.</p>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </div>

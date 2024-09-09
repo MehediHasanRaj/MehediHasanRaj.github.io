@@ -1,23 +1,17 @@
 import {Link} from "react-router-dom";
-import profile from "../../images/profile.jpg"
 
 export default function AdminComponent() {
-    return(
+    return (
         <>
-            <div className="container" style={{
-                backgroundImage: `url(${profile})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '850px',
-
-            }}>
+            <div className="container" style={{textAlign:'justify'}} >
                 <br/>
                 <br/><br/>
                 <h1>Admin Actions</h1>
                 <hr/>
                 <div className="row">
 
-                    <div className="col col-md-4" style={{textAlign: "justify"}}>
+
+                    <div className="col col-md-4" style={{textAlign: "left"}}>
                         <div className="row" style={{padding: '3px'}}>
                             <Link to="/add-project">
                                 <button className={'button-85'}>Add Project</button>
@@ -35,8 +29,13 @@ export default function AdminComponent() {
                         </div>
 
                         <div className="row" style={{padding: '2px'}}>
-                            <Link to="/list-contacts">
+                            <Link to="/contact-lists">
                                 <button className={'button-85'}>View Contact lists</button>
+                            </Link>
+                        </div>
+                        <div className="row" style={{padding: '2px'}}>
+                            <Link to="/delete">
+                                <button className={'button-85'}>Edit profile</button>
                             </Link>
                         </div>
                         <div className="row" style={{padding: '2px'}}>
@@ -46,6 +45,7 @@ export default function AdminComponent() {
                         </div>
 
                     </div>
+
                     <div className="col col-md-4"></div>
                     <div className="col col-md-4"></div>
 
