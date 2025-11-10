@@ -1,5 +1,5 @@
-import {useMemo, useRef, useState} from "react";
-import axios from "axios";
+import { useRef, useState} from "react";
+
 import JoditEditor from "jodit-react";
 import {useAuth} from "../../security/AuthContext";
 
@@ -63,7 +63,7 @@ export default function FormAddProjectCompont() {
 
         // Append each field to FormData
         formData.append("projectName", project.projectName);
-        formData.append("date", project.date);
+        formData.append("date", new Date(project.date).toISOString().split('T')[0]);
         formData.append("description", description);
         formData.append("summary", project.summary);
         formData.append("youtubeLink", project.youtubeLink);

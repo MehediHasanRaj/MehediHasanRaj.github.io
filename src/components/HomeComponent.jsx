@@ -2,7 +2,8 @@ import BannerComponent from "./BannerComponent";
 import KeySkillComponent from "./KeySkillComponent";
 import CertificateComponent from "./CertificateComponents";
 import FeatureWorkComponents from "./FeatureWorkComponents";
-import RecentPostComponent from "./RecentPostComponent";
+import ExperienceComponent from "./Experience Component";
+
 
 
 export default function HomeComponent() {
@@ -10,9 +11,11 @@ export default function HomeComponent() {
         <>
             <BannerComponent/>
             <KeySkillComponent/>
+            <ExperienceComponent/>
             <CertificateComponent/>
+            {/*<ResearchCardComponent/>*/}
             <FeatureWorkComponents/>
-            <RecentPostComponent/>
+            {/*<RecentPostComponent/>*/}
         </>
 
     )

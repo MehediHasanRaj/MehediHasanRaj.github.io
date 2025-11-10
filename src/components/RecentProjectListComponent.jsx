@@ -1,24 +1,22 @@
-import ProjectListComponent from "../ListShowing/ProjectListComponent";
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React from "react";
 import {Link} from "react-router-dom";
-import {useAuth} from "../security/AuthContext";
+
 
 
 export default function RecentProjectListComponent() {
 
-    let [data, setData] = useState([]);
-    const authContext = useAuth()
-    useEffect(() => {
-        authContext.apiClient.get('/api/projects')
-            .then((res) => {
-                setData(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
-    console.log(data);
+    // let [data, setData] = useState([]);
+    // const authContext = useAuth()
+    // useEffect(() => {
+    //     authContext.apiClient.get('/api/projects')
+    //         .then((res) => {
+    //             setData(res.data);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }, []);
+    // console.log(data);
 
 
     return(
@@ -39,159 +37,172 @@ export default function RecentProjectListComponent() {
                     <h1 className="xlTitle pb-md-3" style={{textAlign: 'justify'}}>See
                         recent Projects..</h1>
 
-                    {data.length > 0 ? (
-                        data.map((ob, index) => (
 
-                                <React.Fragment key={index}>
-                                    {index % 4 === 0 && (
-                                        <article className="postcard light blue" style={{ textAlign: 'justify' }}>
+                        <article className="postcard light blue" style={{ textAlign: 'justify' }}>
 
-                                            <img
-                                                className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
-                                                alt="Image Title"/>
-                                            <div className="postcard__text t-dark">
-                                            <h1 className="postcard__title blue"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
-                                                <div className="postcard__subtitle small">
-                                                    <time dateTime="2020-05-25 12:00:00">
-                                                        <i className="fas fa-calendar-alt mr-2"></i> {ob.date}
-                                                    </time>
-                                                </div>
-                                                <div className="postcard__bar"></div>
-                                                <div className="postcard__preview-txt">
-                                                    {ob.summary}
-                                                </div>
-                                                <ul className="postcard__tagbox">
+                            <img
+                                className="postcard__img" src={'https://picsum.photos/501/501'}
+                                alt="Image Title"/>
+                            <div className="postcard__text t-dark">
+                                <h1 className="postcard__title blue"><Link to={`/smart-bank-project-details`}>Smart Bank</Link></h1>
+                                <div className="postcard__subtitle small">
+                                    <time dateTime="2020-05-25 12:00:00">
+                                        <i className="fas fa-calendar-alt mr-2"></i> 20, Dec, 2024
+                                    </time>
+                                </div>
+                                <div className="postcard__bar"></div>
+                                <div className="postcard__preview-txt">
+                                    Smart Bank is a digital banking solution that uses modern technologies like JWT authentication, third-party API integrations, and AI-driven support to deliver secure, fast, and seamless banking experiences.
+                                    It enables users to track finances, generate statements, and access customer support all in one comprehensive platform.
+                                </div>
+                                <ul className="postcard__tagbox">
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">Java</i>
+                                    </li>
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">spring boot</i>
+                                    </li>
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">JWT</i>
+                                    </li>
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">MySQL</i>
+                                    </li>
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">ChatBot</i>
+                                    </li>
+                                    <li className="tag__item play blue">
+                                        <i className="fas fa-tag mr-2">Rest API</i>
+                                    </li>
 
-                                                    {ob.techStack.map((tech) => (
-                                                        <li className="tag__item play blue" key={tech}>
-                                                            <i className="fas fa-tag mr-2"></i>
-                                                            {tech}
-                                                        </li>
-                                                    ))}
-
-                                                    {/*<li className="tag__item play blue">*/}
-                                                    {/*    <a href="#"><i*/}
-                                                    {/*        className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*/}
-                                                    {/*</li>*/}
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    )}
-
-                                    {index % 4 === 1 && (
-                                        <article className="postcard light red">
-
-                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'} alt="Image Title"/>
-
-                                            <div className="postcard__text t-dark">
-                                                <h1 className="postcard__title red"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
-                                                <div className="postcard__subtitle small">
-                                                    <time dateTime="2020-05-25 12:00:00">
-                                                        <i className="fas fa-calendar-alt mr-2"></i> {ob.date}
-                                                    </time>
-                                                </div>
-                                                <div className="postcard__bar"></div>
-                                                <div className="postcard__preview-txt">
-                                                    {ob.summary}
-                                                </div>
-                                                <ul className="postcard__tagbox">
-                                                    {ob.techStack.map((tech) => (
-                                                        <li className="tag__item play red" key={tech}>
-                                                            <i className="fas fa-tag mr-2"></i>
-                                                            {tech}
-                                                        </li>
-                                                    ))}
-                                                    {/*<li className="tag__item play red">*/}
-                                                    {/*    <a href="#"><i className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*/}
-                                                    {/*</li>*/}
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    )}
-
-                                    {index % 4 === 2 && (
-                                        <article className="postcard light green">
-
-                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
-                                                     alt="Image Title"/>
-
-                                            <div className="postcard__text t-dark">
-                                                <h1 className="postcard__title green"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>
-                                                <div className="postcard__subtitle small">
-                                                    <time dateTime="2020-05-25 12:00:00">
-                                                        <i className="fas fa-calendar-alt mr-2"></i>{ob.date}
-                                                    </time>
-                                                </div>
-                                                <div className="postcard__bar"></div>
-                                                <div className="postcard__preview-txt">{ob.summary}
-                                                </div>
-                                                <ul className="postcard__tagbox">
-                                                    {ob.techStack.map((tech) => (
-                                                        <li className="tag__item play green" key={tech}>
-                                                            <i className="fas fa-tag mr-2"></i>
-                                                            {tech}
-                                                        </li>
-                                                    ))}
+                                </ul>
+                            </div>
+                        </article>
+                    {/*}*/}
 
 
+                    {/*<article className="postcard light red">*/}
 
-                                                    {/*<li className="tag__item"><i className="fas fa-clock mr-2"></i>55 mins.</li>*/}
-                                                    {/*<li className="tag__item play green">*/}
-                                                    {/*    <a href="#"><i*/}
-                                                    {/*        className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*/}
-                                                    {/*</li>*/}
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    )}
+                    {/*    <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'} alt="Image Title"/>*/}
 
-                                    {index % 4 === 3 && (
-                                        <article className="postcard light yellow">
-
-                                                <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}
-                                                     alt="Image Title"/>
-
-                                            <div className="postcard__text t-dark">
-                                                {/*<h1 className="postcard__title yellow"><a href="#">{ob.title}</a>*/}
-                                                {/*</h1>*/}
-                                                <h1 className="postcard__title yellow">
-                                                    <Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link>
-                                                </h1>
-
-                                                <div className="postcard__subtitle small">
-                                                    <time dateTime="2020-05-25 12:00:00">
-                                                        <i className="fas fa-calendar-alt mr-2"></i>{ob.date}
-                                                    </time>
-                                                </div>
-                                                <div className="postcard__bar"></div>
-                                                <div className="postcard__preview-txt">{ob.summary}
-                                                </div>
-                                                <ul className="postcard__tagbox">
-                                                    {ob.techStack.map((tech) => (
-                                                        <li className="tag__item play yellow" key={tech}>
-                                                            <i className="fas fa-tag mr-2"></i>
-                                                            {tech}
-                                                        </li>
-                                                    ))}
-                                                    {/*<li className="tag__item"><i className="fas fa-clock mr-2"></i>55 mins.</li>*/}
-                                                    {/*<li className="tag__item play yellow">*/}
-                                                    {/*    <a href="#"><i className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*/}
-                                                    {/*</li>*/}
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    )}
+                    {/*        <div className="postcard__text t-dark">*/}
+                    {/*            <h1 className="postcard__title red"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>*/}
+                    {/*            <div className="postcard__subtitle small">*/}
+                    {/*                <time dateTime="2020-05-25 12:00:00">*/}
+                    {/*                    <i className="fas fa-calendar-alt mr-2"></i> {ob.date}*/}
+                    {/*                </time>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="postcard__bar"></div>*/}
+                    {/*            <div className="postcard__preview-txt">*/}
+                    {/*                {ob.summary}*/}
+                    {/*            </div>*/}
+                    {/*            <ul className="postcard__tagbox">*/}
+                    {/*                {ob.techStack.map((tech) => (*/}
+                    {/*                    <li className="tag__item play red" key={tech}>*/}
+                    {/*                        <i className="fas fa-tag mr-2"></i>*/}
+                    {/*                        {tech}*/}
+                    {/*                    </li>*/}
+                    {/*                ))}*/}
+                    {/*                /!*<li className="tag__item play red">*!/*/}
+                    {/*                /!*    <a href="#"><i className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*!/*/}
+                    {/*                /!*</li>*!/*/}
+                    {/*            </ul>*/}
+                    {/*        </div>*/}
+                    {/*    </article>*/}
+                    {/*}*/}
 
 
-                                </React.Fragment>
+                    {/*    <article className="postcard light green">*/}
+
+                    {/*        <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}*/}
+                    {/*             alt="Image Title"/>*/}
+
+                    {/*        <div className="postcard__text t-dark">*/}
+                    {/*            <h1 className="postcard__title green"><Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link></h1>*/}
+                    {/*            <div className="postcard__subtitle small">*/}
+                    {/*                <time dateTime="2020-05-25 12:00:00">*/}
+                    {/*                    <i className="fas fa-calendar-alt mr-2"></i>{ob.date}*/}
+                    {/*                </time>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="postcard__bar"></div>*/}
+                    {/*            <div className="postcard__preview-txt">{ob.summary}*/}
+                    {/*            </div>*/}
+                    {/*            <ul className="postcard__tagbox">*/}
+                    {/*                {ob.techStack.map((tech) => (*/}
+                    {/*                    <li className="tag__item play green" key={tech}>*/}
+                    {/*                        <i className="fas fa-tag mr-2"></i>*/}
+                    {/*                        {tech}*/}
+                    {/*                    </li>*/}
+                    {/*                ))}*/}
 
 
-                            )
-                        )
-                    ) : (
-                        <p>Loading Recent works....</p>
-                    )
-                    }
+
+                    {/*                /!*<li className="tag__item"><i className="fas fa-clock mr-2"></i>55 mins.</li>*!/*/}
+                    {/*                /!*<li className="tag__item play green">*!/*/}
+                    {/*                /!*    <a href="#"><i*!/*/}
+                    {/*                /!*        className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*!/*/}
+                    {/*                /!*</li>*!/*/}
+                    {/*            </ul>*/}
+                    {/*        </div>*/}
+                    {/*    </article>*/}
+                    {/*}*/}
+
+
+                    {/*    <article className="postcard light yellow">*/}
+
+                    {/*        <img className="postcard__img" src={`${authContext.baseUrl}${ob.imageLink}` || 'https://picsum.photos/501/501'}*/}
+                    {/*             alt="Image Title"/>*/}
+
+                    {/*        <div className="postcard__text t-dark">*/}
+                    {/*            /!*<h1 className="postcard__title yellow"><a href="#">{ob.title}</a>*!/*/}
+                    {/*            /!*</h1>*!/*/}
+                    {/*            <h1 className="postcard__title yellow">*/}
+                    {/*                <Link to={`/project-details/${ob.id}`}>{ob.projectName}</Link>*/}
+                    {/*            </h1>*/}
+
+                    {/*            <div className="postcard__subtitle small">*/}
+                    {/*                <time dateTime="2020-05-25 12:00:00">*/}
+                    {/*                    <i className="fas fa-calendar-alt mr-2"></i>{ob.date}*/}
+                    {/*                </time>*/}
+                    {/*            </div>*/}
+                    {/*            <div className="postcard__bar"></div>*/}
+                    {/*            <div className="postcard__preview-txt">{ob.summary}*/}
+                    {/*            </div>*/}
+                    {/*            <ul className="postcard__tagbox">*/}
+                    {/*                {ob.techStack.map((tech) => (*/}
+                    {/*                    <li className="tag__item play yellow" key={tech}>*/}
+                    {/*                        <i className="fas fa-tag mr-2"></i>*/}
+                    {/*                        {tech}*/}
+                    {/*                    </li>*/}
+                    {/*                ))}*/}
+                    {/*                /!*<li className="tag__item"><i className="fas fa-clock mr-2"></i>55 mins.</li>*!/*/}
+                    {/*                /!*<li className="tag__item play yellow">*!/*/}
+                    {/*                /!*    <a href="#"><i className="fas fa-thin fa-at mr-2"></i>{ob.author}</a>*!/*/}
+                    {/*                /!*</li>*!/*/}
+                    {/*            </ul>*/}
+                    {/*        </div>*/}
+                    {/*    </article>*/}
+                    {/*}*/}
+
+
+
+
+                    {/*{data.length > 0 ? (*/}
+                    {/*    data.map((ob, index) => (*/}
+
+                    {/*            <React.Fragment key={index}>*/}
+                    {/*                */}
+
+
+                    {/*            </React.Fragment>*/}
+
+
+                    {/*        )*/}
+                    {/*    )*/}
+                    {/*) : (*/}
+                    {/*    <p>Loading Recent works....</p>*/}
+                    {/*)*/}
+                    {/*}*/}
 
 
                     {/*<article className="postcard light green">*/}

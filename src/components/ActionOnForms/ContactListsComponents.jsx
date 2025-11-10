@@ -1,16 +1,18 @@
 // Table.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useAuth} from "../../security/AuthContext";
 
 function ContactListsComponents() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const authContext = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/contacts'); // Replace with your API endpoint
+                const response = await axios.get(`${authContext.baseUrl}/api/contacts`); // Replace with your API endpoint
                 setData(response.data);
             } catch (error) {
                 setError(error);

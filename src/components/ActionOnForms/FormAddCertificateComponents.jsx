@@ -1,5 +1,4 @@
 import {useState} from "react";
-import axios from "axios";
 import {useAuth} from "../../security/AuthContext";
 
 
@@ -36,16 +35,20 @@ export default function FormAddCertificateComponents() {
         event.preventDefault(); // Prevent form submission from reloading the page
 
         const blogData = {
-            name: certificate.title,
+            title: certificate.title,
             date: new Date(certificate.date).toISOString().split('T')[0],
             organization: certificate.organization,
             description: certificate.description,
         };
 
+        console.log("this is your blog data")
+        console.log(blogData);
+
         try {
             const response = await authContext.apiClient.post("/api/certificates", blogData, {
                 headers: {
                     "Content-Type": "application/json", // Set the correct content type
+
                 },
             });
 
@@ -75,7 +78,7 @@ export default function FormAddCertificateComponents() {
                         <form style={{textAlign: 'left'}} onSubmit={submitContact}>
                             <label htmlFor="title"><b>Certificate Name</b></label>
                             <input type="text" name="title" onChange={handleContactChange}
-                                   placeholder="course name.."/>
+                                   placeholder="Certificate name.."/>
 
                             <label htmlFor="organization"><b>Issued Organization</b></label>
                             <input type="text" name="organization" onChange={handleContactChange}

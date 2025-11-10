@@ -23,6 +23,9 @@ import FormAddBlogComponent from "./components/ActionOnForms/FormAddBlogComponen
 import FormAddCertificateComponents from "./components/ActionOnForms/FormAddCertificateComponents";
 import ContactListsComponents from "./components/ActionOnForms/ContactListsComponents";
 import CertificateListsComponents from "./components/CertificateListComponents";
+import ProfileComponent from "./components/ActionOnForms/ProfileComponent";
+import SmartBankProjectDetails from "./components/projectsList/SmartBankProjectDetails";
+import DynamicProgramming from "./components/blogLists/DynamicProgramming";
 
 function AuthenticatedRoute({children}){
     const authContext = useAuth();
@@ -51,6 +54,13 @@ function App() {
 
                         <Route path="/login" element={<LoginComponent/>}/>
 
+                        {/*all projects list link*/}
+                        <Route path="/smart-bank-project-details" element={<SmartBankProjectDetails/>}/>
+
+
+                        {/*all blog list link*/}
+                        <Route path="/dynamic-programming" element={<DynamicProgramming/>}/>
+
                         <Route path="/contact-lists" element={<AuthenticatedRoute><ContactListsComponents/></AuthenticatedRoute>}/>
                         <Route path="/add-blog" element={<AuthenticatedRoute><FormAddBlogComponent/></AuthenticatedRoute>}/>
                         <Route path="/add-certificate" element={<AuthenticatedRoute><FormAddCertificateComponents/></AuthenticatedRoute>}/>
@@ -60,11 +70,14 @@ function App() {
                         <Route path="/admin" element={<AuthenticatedRoute>
                             <AdminComponent/>
                         </AuthenticatedRoute>}/>
+                        <Route path="/profile" element={<AuthenticatedRoute>
+                            <ProfileComponent/>
+                        </AuthenticatedRoute>}/>
 
                         <Route path="/delete" element={<AuthenticatedRoute>
                             <DeleteByIdComponent/>
                         </AuthenticatedRoute>}/>
-                        <Route path={"*"} element={<ErrorComponent/>}/>
+                        <Route element={<ErrorComponent/>}/>
                     </Routes>
             <FooterComponent/>
         </AuthProvider>

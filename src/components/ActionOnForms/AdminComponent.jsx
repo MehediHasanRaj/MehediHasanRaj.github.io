@@ -35,12 +35,12 @@ export default function AdminComponent() {
                         </div>
                         <div className="row" style={{padding: '2px'}}>
                             <Link to="/delete">
-                                <button className={'button-85'}>Edit profile</button>
+                                <button className={'button-85'}>Delete by Id</button>
                             </Link>
                         </div>
                         <div className="row" style={{padding: '2px'}}>
-                            <Link to="/delete">
-                                <button className={'button-85'}>Delete by Id</button>
+                            <Link to="/profile">
+                                <button className={'button-85'}>Edit profile</button>
                             </Link>
                         </div>
 

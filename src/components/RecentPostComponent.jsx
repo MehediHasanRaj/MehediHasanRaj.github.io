@@ -14,8 +14,10 @@ export default function RecentPostComponent() {
                 console.log(err);
             });
     }, []);
+    if(data.length > 2){
+        data = data.slice(0,2) // taking the last 2 element
+    }
 
-    data = data.slice(data.length - 2) // taking the last 2 element
 
 
 

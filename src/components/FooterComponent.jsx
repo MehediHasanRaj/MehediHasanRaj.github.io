@@ -3,6 +3,7 @@ import fb from '../images/fb.svg'
 import github from '../images/github-mark.svg'
 import linkedin from '../images/linkedin.svg'
 import instagram from '../images/insta.svg'
+import {Link} from "react-router-dom";
 
 const FooterComponent = () => {
     return (
@@ -17,8 +18,9 @@ const FooterComponent = () => {
                                                                                           alt="Instagram"/></a></li>
                     </ul>
                     <div className="copyrightCol">
-                        <p>Copyright ©2024 All rights reserved.</p>
+                        <p>Copyright <Link to="/login">©</Link>2024 All rights reserved.</p>
                     </div>
+
                 </div>
             </div>
         </footer>

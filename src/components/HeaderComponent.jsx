@@ -37,7 +37,7 @@ export default function HeaderComponent() {
                     <div className="row align-items-center">
                         <div className="col-auto">
                             <div className="logoCol">
-                                <a href=""><img src={logo} alt="Logo" /></a>
+                                <Link to="/"><img src={logo} alt="Logo"/></Link>
                             </div>
                         </div>
                         <div className="col">

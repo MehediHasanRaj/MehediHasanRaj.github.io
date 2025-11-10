@@ -9,33 +9,24 @@ export const useAuth = () => useContext(AuthContext)  // by "useAuth" any one ca
 
 export default function AuthProvider({children}) {
     // putting some states in context
-
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [isAuthenticated, setAuthenticated] = useState(false)
     const apiClient = axios.create({
-        baseURL: 'http://localhost:8080'
+        // baseURL: 'http://localhost:8080'
+        baseURL : 'https://portfolio-backend-production-2c30.up.railway.app'
     })
 
-    const baseUrl = "http://localhost:8080"
+    // const baseUrl = "http://localhost:8080"
+    const baseUrl = "https://portfolio-backend-production-2c30.up.railway.app"
 
-    function login(username, password) {
-        if (username === 'mehedi.raj@northsouth.edu' && password === 'mr21396') {
-
-            setAuthenticated(true);
-            // setUsername(username)
-            return true
-        } else {
-            setAuthenticated(false);
-            // setUsername("Raj")
-            return false
-        }
-    }
 
     function logout() {
         setAuthenticated(false);
     }
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, login, apiClient,baseUrl}}>
+        <AuthContext.Provider value={{isAuthenticated,setAuthenticated, apiClient,baseUrl, username, setUsername, password, setPassword}}>
             {children}
         </AuthContext.Provider>
     )

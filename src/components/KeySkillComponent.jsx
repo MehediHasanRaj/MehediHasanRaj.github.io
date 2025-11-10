@@ -4,6 +4,8 @@ import skillIcon2 from '../images/key-skill-icon-2.svg';
 import skillIcon3 from '../images/key-skill-icon-3.svg';
 import skillIcon4 from '../images/key-skill-icon-1.svg';
 import '../css/techStackbutton.css'
+import '../css/button33.css'
+import '../css/button85.css'
 const Skills = () => {
     return (
         <section>
@@ -134,20 +136,37 @@ const Skills = () => {
                                 <br/>
                                 <br/>
                                 <h4 className="smTitle pb-3">Techlogies</h4>
-                                <button className="techButton me-2 my-1">Spring</button>
+                                <button className="techButton me-2 my-1">Java, C++, Python</button>
+                                <button className="techButton me-2 my-1">JavaScript, SQL, TypeScript</button>
                                 <button className="techButton me-2 my-1">Spring boot</button>
-                                <button className="techButton me-2 my-1">Microservice</button>
+                                <button className="techButton me-2 my-1">Spring MVC</button>
                                 <button className="techButton me-2 my-1">Spring Security</button>
+                                <button className="techButton me-2 my-1">Spring Cloud</button>
+                                <button className="techButton me-2 my-1">Microservice</button>
                                 <button className="techButton me-2 my-1">React</button>
+                                <button className="techButton me-2 my-1">Cloud Computing</button>
                                 <button className="techButton me-2 my-1">AWS</button>
+                                <button className="techButton me-2 my-1">Azure, GCP</button>
                                 <button className="techButton me-2 my-1">Maven</button>
                                 <button className="techButton me-2 my-1">Gradle</button>
                                 <button className="techButton me-2 my-1">Hibernate</button>
                                 <button className="techButton me-2 my-1">SQL</button>
                                 <button className="techButton me-2 my-1">NoSql</button>
-                                <button className="techButton me-2 my-1">Cloud Computing</button>
+
                                 <button className="techButton me-2 my-1">Git</button>
                                 <button className="techButton me-2 my-1">Docker</button>
+
+                                <button className="techButton me-2 my-1">Kafka</button>
+                                <button className="techButton me-2 my-1">CI/CD</button>
+                                <button className="techButton me-2 my-1">Test-Driven-Development</button>
+                                <button className="techButton me-2 my-1">Redis</button>
+
+                                <button className="techButton me-2 my-1">Deep Learning</button>
+                                <button className="techButton me-2 my-1">Machine Learning</button>
+                                <button className="techButton me-2 my-1">LLM</button>
+                                <button className="techButton me-2 my-1">AI</button>
+                                <button className="techButton me-2 my-1">Software Development</button>
+
                             </div>
 
                         </div>

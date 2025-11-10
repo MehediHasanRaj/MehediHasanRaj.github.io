@@ -1,0 +1,43 @@
+.research-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    max-width: 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-3px);
+}
+
+.research-title {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.research-meta {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.research-summary {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.research-link {
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.research-link:hover {
+    color: #005fa3;
+}
