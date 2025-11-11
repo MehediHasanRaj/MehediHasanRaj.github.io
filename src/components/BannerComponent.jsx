@@ -20,18 +20,39 @@ const Banner = () => {
                         <div className="col-md">
                             <div className="bannerContent">
                                 <h1 className="xlTitle pb-3" style={{textAlign: 'left'}}>Hi, I’m Mehedi Hasan
-                                    Raj, <br/>a Software Developer</h1>
+                                    Raj, <br/>AI Software Engineer</h1>
                                 <div style={{textAlign:'justify', fontFamily:'courier', fontStyle:'italic'}}>
                                     <p><b>B.Sc. in Computer Science @NSU, BD.(1<sup>st</sup> class)</b><br/>
-                                    <b>M.Sc. in Data Science @Essex, UK.(Distinction)</b></p>
+                                    <b>M.Sc. in Data Science @Essex, UK.(1<sup>st</sup> class, Distinction)</b></p>
                                 </div>
                                 <p style={{
                                     textAlign: 'left',
                                     fontFamily: 'Arial, Helvetica, sans-serif',
                                     fontSize: 'medium'
                                 }}>
-                                    a Junior Java Software Engineer specializing in scalable, secure microservices using Spring Boot. I excel in debugging, performance optimization—improving applications by 15%—and implementing efficient CI/CD pipelines.
-                                    <br/><br/>Recognized in the top 30% of LeetCode global contests, I also have research expertise in machine learning and deep learning, with published work in the field. Let's connect and innovate together!
+{/*                                     a Junior Java Software Engineer specializing in scalable, secure microservices using Spring Boot. I excel in debugging, performance optimization—improving applications by 15%—and implementing efficient CI/CD pipelines. */}
+{/*                                     <br/><br/>Recognized in the top 30% of LeetCode global contests, I also have research expertise in machine learning and deep learning, with published work in the field. Let's connect and innovate together! */}
+
+                                    <p className="mb-4 text-gray-800 text-lg">
+                                      I’m a <strong>Junior AI Software Engineer</strong> and <strong>aspiring researcher 👨‍💻</strong>, skilled in <strong>Python 🐍</strong> and <strong>Java ☕</strong>. I specialize in <strong>scalable, secure Spring Boot microservices ⚙️</strong> with AI applications in <strong>NLP 🗣️</strong> and <strong>Computer Vision 👁️</strong>.
+                                    </p>
+
+
+                                    <p className="mb-4 text-gray-800 text-lg">
+                                      Ranked in the <strong>top 30% of global LeetCode contests 🏆</strong>, my research spans
+                                      <strong> Machine Learning 🤖</strong>,
+                                      <strong>Deep Learning 🧠</strong>,
+                                      <strong>IoT Security 🔒</strong>, and
+                                      <strong> Extreme Multilabel Text Classification 📄</strong>,
+                                      resulting in <strong>international publications 🌍</strong>.
+                                    </p>
+
+
+                                    <p className="mb-4 text-gray-800 text-lg">
+                                      Looking a <strong>PhD 🎓 in NLP 🗣️ and Computer Vision 👁️</strong> to advance <strong>human-centered AI systems 💡</strong>.
+                                    </p>
+
+
                                     {/*{ data.bio }*/}
                                 </p>
                                 <div className="bannerBtnCol">

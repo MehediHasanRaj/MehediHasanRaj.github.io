@@ -26,6 +26,7 @@ import CertificateListsComponents from "./components/CertificateListComponents";
 import ProfileComponent from "./components/ActionOnForms/ProfileComponent";
 import SmartBankProjectDetails from "./components/projectsList/SmartBankProjectDetails";
 import DynamicProgramming from "./components/blogLists/DynamicProgramming";
+import ExtremeMultilabelProjectDetails from "./components/projectsList/ExtremeMultilabelProjectDetails";
 
 function AuthenticatedRoute({children}){
     const authContext = useAuth();
@@ -56,6 +57,7 @@ function App() {
 
                         {/*all projects list link*/}
                         <Route path="/smart-bank-project-details" element={<SmartBankProjectDetails/>}/>
+                        <Route path="/extreme-multilabel-project-details" element={<ExtremeMultilabelProjectDetails/>}/>
 
 
                         {/*all blog list link*/}
@@ -65,8 +67,7 @@ function App() {
                         <Route path="/add-blog" element={<AuthenticatedRoute><FormAddBlogComponent/></AuthenticatedRoute>}/>
                         <Route path="/add-certificate" element={<AuthenticatedRoute><FormAddCertificateComponents/></AuthenticatedRoute>}/>
                         <Route path="/add-project" element={<AuthenticatedRoute>
-                            <FormAddProjectCompont/>
-                        </AuthenticatedRoute>}/>
+                       <FormAddProjectCompont/></AuthenticatedRoute>}/>
                         <Route path="/admin" element={<AuthenticatedRoute>
                             <AdminComponent/>
                         </AuthenticatedRoute>}/>

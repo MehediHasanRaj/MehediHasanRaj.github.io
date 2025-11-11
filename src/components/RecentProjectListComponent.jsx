@@ -78,6 +78,48 @@ export default function RecentProjectListComponent() {
                                 </ul>
                             </div>
                         </article>
+
+
+
+                        <article className="postcard light blue" style={{ textAlign: 'justify' }}>
+
+                                                    <img
+                                                        className="postcard__img" src={'https://picsum.photos/501/502'}
+                                                        alt="Image Title"/>
+                                                    <div className="postcard__text t-dark">
+                                                        <h1 className="postcard__title blue"><Link to={`/extreme-multilabel-project-details`}>🎓 M.Sc Thesis: Extreme Multi-label Text Classification | University of Essex</Link></h1>
+                                                        <div className="postcard__subtitle small">
+                                                            <time dateTime="2020-05-25 12:00:00">
+                                                                <i className="fas fa-calendar-alt mr-2"></i> 1, Mar, 2023
+                                                            </time>
+                                                        </div>
+                                                        <div className="postcard__bar"></div>
+                                                        <div className="postcard__preview-txt">
+                                                            I conducted research on extreme multi-label text classification using deep learning, showing that title-based semantic annotation can outperform full-text annotation. I implemented CNN, GRU, LSTM, and MLP models, with CNN achieving the highest F1 score of 0.498. My work combines Python, NLP, and deep learning to tackle large-scale datasets with thousands of labels
+                                                        </div>
+                                                        <ul className="postcard__tagbox">
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">Deep Learning</i>
+                                                            </li>
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">NLP</i>
+                                                            </li>
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">CNN</i>
+                                                            </li>
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">Python</i>
+                                                            </li>
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">Semantic-Annotation</i>
+                                                            </li>
+                                                            <li className="tag__item play blue">
+                                                                <i className="fas fa-tag mr-2">AI Research</i>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </article>
                     {/*}*/}
 
 
